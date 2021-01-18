@@ -34,3 +34,12 @@ with open(csvpath) as csvfile:
     # Check to make sure it can read each row of data after the header
     for row in csvreader:
         print(row)
+
+
+#-------------------------------------------------#
+# Print Statements (Test)
+# The text print statements and formatting are taken directly from the homework instructions, the values are dependant upon the code running successfully
+print(f"Financial Analysis")
+print(f"----------------------------")
+# Should print the text and then a zero value for now
+print(f"total_months {total_months}")
