@@ -5,6 +5,20 @@ import csv
 # Set path for the csv file in the Resources folder
 csvpath = os.path.join("Resources", "budget_data.csv")
 
+# Define variables that will be pulled from CSV
+total_months = 0
+net_profit = 0
+
+# Define lists hold the months and the profit/loss changes
+# This is a place to store the values as the for loop goes through the csv
+months = []
+month_profit_change = []
+
+# Define variables needed for future calculations
+average_change = 0
+greatest_increase = 0
+greatest_decrease = 0
+
 # Open the CSV and make sure that it is being read
 with open(csvpath) as csvfile:
 
