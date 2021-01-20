@@ -8,10 +8,12 @@ csvpath = os.path.join("Resources", "budget_data.csv")
 # Define variables that will be pulled from CSV
 total_months = 0
 net_profit = 0
+month = 0
+profit_loss = 0
 
 # Define lists hold the months and the profit/loss changes
 # This is a place to store the values as the for loop goes through the csv
-months = []
+month_count = []
 month_profit_change = []
 
 # Define variables needed for future calculations
@@ -25,15 +27,29 @@ with open(csvpath) as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
     # Print csvreader to make sure everything is set up correctly
-    print(csvreader)
+    #print(csvreader)
 
     # Recognize the header row, and know to skip when working with the rest of the rows
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    #print(f"CSV Header: {csv_header}")
 
-    # Check to make sure it can read each row of data after the header
+    # Set for loop to read through each row of the csvreader
     for row in csvreader:
-        print(row)
+        
+        # Define what information is held in each column of each row
+        month = (row[0])
+        profit_loss = int(row[1])
+        
+        # Add month value to the month_count list
+        # Get total months by getting the length of the month_count list
+        # UNSURE IF THIS IS THE BEST WAY TO DO THIS _but it works for now
+        month_count.append(month)
+        total_months = len(month_count)
+        
+
+        # Find the net profit by adding the profit_loss value of column 1 to the net profit running total
+        net_profit = net_profit + profit_loss
+        #print(net_profit)
 
 
 #-------------------------------------------------#
