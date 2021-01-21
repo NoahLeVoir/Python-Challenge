@@ -18,6 +18,8 @@ month_profit_change = []
 
 # Define variables needed for future calculations
 average_change = 0
+pl_change = 0
+prev_row = 0
 greatest_increase = 0
 greatest_decrease = 0
 
@@ -40,16 +42,35 @@ with open(csvpath) as csvfile:
         month = (row[0])
         profit_loss = int(row[1])
         
+
         # Add month value to the month_count list
         # Get total months by getting the length of the month_count list
         # UNSURE IF THIS IS THE BEST WAY TO DO THIS _but it works for now
         month_count.append(month)
         total_months = len(month_count)
         
-
         # Find the net profit by adding the profit_loss value of column 1 to the net profit running total
         net_profit = net_profit + profit_loss
         #print(net_profit)
+
+        # TEST
+        # Calculate the monthly change in profit_loss
+        pl_change = profit_loss - prev_row
+        
+        month_profit_change.append(pl_change)
+        #print(month_profit_change) - NOT appending the values I want
+        
+        prev_row = int(row[1])
+        
+        #print(pl_change)
+        
+        
+        
+
+    # Get the average by dividing the monthly change numbers by the total months count
+    average_change = sum(month_profit_change) / (len(month_profit_change))
+    print(sum(month_profit_change))
+    #print(int(len(month_profit_change)))
 
 
 #-------------------------------------------------#
