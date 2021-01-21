@@ -55,7 +55,7 @@ with open(csvpath) as csvfile:
 
         # TEST
         # Calculate the monthly change in profit_loss
-        pl_change = profit_loss - prev_row
+        pl_change = profit_loss - prev_row  # This calculation is working, BUT takes the first pl value instead of a zero
         
         month_profit_change.append(pl_change)
         #print(month_profit_change) - NOT appending the values I want
@@ -64,7 +64,13 @@ with open(csvpath) as csvfile:
         
         #print(pl_change)
         
-        
+        # Calculate the greatest change in increase to the profit_loss column
+        if pl_change > greatest_increase:
+            greatest_increase = pl_change 
+            
+        # Calculate the greatest change in decrease to the profit_loss column
+        if pl_change < greatest_decrease:
+            greatest_decrease = pl_change
         
 
     # Get the average by dividing the monthly change numbers by the total months count
