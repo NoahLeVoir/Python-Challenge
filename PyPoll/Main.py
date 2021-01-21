@@ -19,3 +19,19 @@ with open(csvpath) as csvfile:
     # Recognize the header row, and know to skip when working with the rest of the rows
     csv_header = next(csvreader)
     print(f"CSV Header: {csv_header}")
+
+
+
+
+
+
+
+
+#-------------------------------------------------#
+# Print Statements (Test)
+# The text print statements and formatting are taken directly from the homework instructions, the values are dependant upon the code running successfully
+print("Election Results")
+print("-------------------------")
+print("Total Votes: ")
+print("-------------------------")
+
