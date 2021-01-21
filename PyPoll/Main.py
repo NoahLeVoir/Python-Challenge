@@ -36,9 +36,23 @@ with open(csvpath) as csvfile:
         # The length of the list we just created will give us the number for the total votes cast
         total_votes = len(vote_counter)
 
+        # Now we can use if statements to count votes for each candidate
+        # First however we need to identify the candidate column
+        candidate = row[2]
+        if candidate == "Khan":
+            khan_votes.append(candidate)
+        elif candidate == "Correy":
+            correy_votes.append(candidate)
+        elif candidate == "Li":
+            li_votes.append(candidate)
+        else:
+            otooley_votes.append(candidate)
 
-
-
+    # Now the length function of each list will reveal the number of votes each candidate recieved
+    khan_total = len(khan_votes)
+    correy_total = len(correy_votes)
+    li_total = len(li_votes)
+    otooley_total = len(otooley_votes)
 
 
 #-------------------------------------------------#
@@ -48,4 +62,5 @@ print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {total_votes}")
 print("-------------------------")
+print(f"Khan: % ({khan_total})")
 
