@@ -67,6 +67,22 @@ with open(csvpath) as csvfile:
     otooley_pct = otooley_total / total_votes
     otooley_pct ="{:.3%}".format(otooley_pct)
 
+    # Use the max function to find who had the greatest number of votes to decide the winner
+    winner = max(khan_total, correy_total, li_total, otooley_total)
+    # This displays the max vote total
+    #print(winner)
+
+    # If I want the winners name I can use if logic to get the value of the winners name
+    # Will use a new variable called 'winners name' to store this
+    if winner == khan_total:
+        winner_name = "Khan"
+    elif winner == correy_total:
+        winner_name = "Correy"
+    elif winner == li_total:
+        winner_name = "Li"
+    else:
+        winner_name = "O'Tooley"
+    #print(winner_name)
 
 #-------------------------------------------------#
 # Print Statements (Test)
@@ -80,6 +96,6 @@ print(f"Correy: {correy_pct} ({correy_total})")
 print(f"Li: {li_pct} ({li_total})")
 print(f"O'Tooley: {otooley_pct} ({otooley_total})")
 print("-------------------------")
-print(f"Winner: ")
+print(f"Winner: {winner_name}")
 print("-------------------------")
 
