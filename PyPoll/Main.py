@@ -54,6 +54,11 @@ with open(csvpath) as csvfile:
     li_total = len(li_votes)
     otooley_total = len(otooley_votes)
 
+    # To get the percent value we will divide the candidate total from the total votes and cast to a percent
+    khan_pct = khan_total / total_votes
+    khan_pct = "{:.3%}".format(khan_pct)
+    print(khan_pct)
+
 
 #-------------------------------------------------#
 # Print Statements (Test)
