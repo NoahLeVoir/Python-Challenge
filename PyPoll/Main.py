@@ -56,8 +56,16 @@ with open(csvpath) as csvfile:
 
     # To get the percent value we will divide the candidate total from the total votes and cast to a percent
     khan_pct = khan_total / total_votes
+    # This format function displays the result as a percentage with 3 decimal points like it shows in the homework example
     khan_pct = "{:.3%}".format(khan_pct)
-    print(khan_pct)
+    #print(khan_pct)
+    # Run the same calculation as above for the rest of the candidates
+    correy_pct = correy_total / total_votes
+    correy_pct ="{:.3%}".format(correy_pct)
+    li_pct = li_total / total_votes
+    li_pct ="{:.3%}".format(li_pct)
+    otooley_pct = otooley_total / total_votes
+    otooley_pct ="{:.3%}".format(otooley_pct)
 
 
 #-------------------------------------------------#
@@ -67,10 +75,10 @@ print("Election Results")
 print("-------------------------")
 print(f"Total Votes: {total_votes}")
 print("-------------------------")
-print(f"Khan: % ({khan_total})")
-print(f"Correy: % ({correy_total})")
-print(f"Li: % ({li_total})")
-print(f"O'Tooley: % ({otooley_total})")
+print(f"Khan: {khan_pct} ({khan_total})")
+print(f"Correy: {correy_pct} ({correy_total})")
+print(f"Li: {li_pct} ({li_total})")
+print(f"O'Tooley: {otooley_pct} ({otooley_total})")
 print("-------------------------")
 print(f"Winner: ")
 print("-------------------------")
