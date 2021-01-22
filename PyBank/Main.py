@@ -53,16 +53,20 @@ with open(csvpath) as csvfile:
         net_profit = net_profit + profit_loss
         #print(net_profit)
 
-        # TEST
-        # Calculate the monthly change in profit_loss
-        pl_change = profit_loss - prev_row  # This calculation is working, BUT takes the first pl value instead of a zero
-        
-        month_profit_change.append(pl_change)
-        #print(month_profit_change) - NOT appending the values I want
-        
+
+        # Calculate the monthly change in profit_loss using if statement
+        # This if statement fixes the issue of not getting a zero for the first value
+        if pl_change != 0:
+            pl_change = profit_loss - prev_row
+            month_profit_change.append(pl_change)
+        else:
+            month_profit_change.append(pl_change)
+            pl_change = profit_loss - prev_row
+        #print(month_profit_change)
+    
+        # This will store the value in the profit/loss column so that the next time we cycle through it can be used for the pl_change calculation
         prev_row = int(row[1])
         
-        #print(pl_change)
         
         # Calculate the greatest change in increase to the profit_loss column
         if pl_change > greatest_increase:
@@ -74,9 +78,10 @@ with open(csvpath) as csvfile:
         
 
     # Get the average by dividing the monthly change numbers by the total months count
-    average_change = sum(month_profit_change) / (len(month_profit_change))
-    print(sum(month_profit_change))
-    #print(int(len(month_profit_change)))
+    # The len(month_profit_change) needs a -1 because there is no value change for the first month, meaning there is one less month in the average calculation
+    average_change = sum(month_profit_change) / (len(month_profit_change) - 1)
+    #print(sum(month_profit_change))
+    #print((len(month_profit_change))) - This print statement saved me
 
 
 #-------------------------------------------------#
