@@ -103,3 +103,23 @@ print("-------------------------")
 
 #-------------------------------------------------#
 # Export text file of results to Analysis folder
+
+# Specify the file to write to
+txt_output = os.path.join("Analysis", "PyPoll_Results.txt")
+
+# Open the file using the "w" to write to a file
+with open(txt_output, 'w',) as PyPoll_Results:
+
+    # Write the same information to the file that was printed in the terminal
+    # Added the '\n' because it is a line break function in python when writing to a fiel, this makes the txt output resemble the terminal print
+    PyPoll_Results.write("Election Results\n")
+    PyPoll_Results.write("-------------------------\n")
+    PyPoll_Results.write(f"Total Votes: {total_votes}\n")
+    PyPoll_Results.write("-------------------------\n")
+    PyPoll_Results.write(f"Khan: {khan_pct} ({khan_total})\n")
+    PyPoll_Results.write(f"Correy: {correy_pct} ({correy_total})\n")
+    PyPoll_Results.write(f"Li: {li_pct} ({li_total})\n")
+    PyPoll_Results.write(f"O'Tooley: {otooley_pct} ({otooley_total})\n")
+    PyPoll_Results.write("-------------------------\n")
+    PyPoll_Results.write(f"Winner: {winner_name}\n")
+    PyPoll_Results.write("-------------------------")
