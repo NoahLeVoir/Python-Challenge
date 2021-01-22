@@ -8,7 +8,7 @@ csvpath = os.path.join("Resources", "election_data.csv")
 # Dim the variables for total votes and for each candidate
 total_votes = 0
 
-# Store votes for each candidate
+# Define place to store votes for each candidate
 khan_votes = []
 correy_votes = []
 li_votes = []
@@ -29,7 +29,8 @@ with open(csvpath) as csvfile:
     csv_header = next(csvreader)
     #print(f"CSV Header: {csv_header}")
 
-    # First we will get the total number of votes cast by counting all of the ID row and putting them into a list
+    # First get the total number of votes cast by counting each unique voter ID
+    # This is the value stored in the first row, add each entry to the voter count list
     for row in csvreader:
         vote = int(row[0])
         vote_counter.append(vote)
@@ -48,18 +49,19 @@ with open(csvpath) as csvfile:
         else:
             otooley_votes.append(candidate)
 
-    # Now the length function of each list will reveal the number of votes each candidate recieved
+    # Same as with total_votes, the length function of each list will reveal the number of votes each candidate recieved
     khan_total = len(khan_votes)
     correy_total = len(correy_votes)
     li_total = len(li_votes)
     otooley_total = len(otooley_votes)
 
-    # To get the percent value we will divide the candidate total from the total votes and cast to a percent
+    # To get the percent value we will divide the candidate total from the total votes
     khan_pct = khan_total / total_votes
-    # This format function displays the result as a percentage with 3 decimal points like it shows in the homework example
+    # This format function displays the result as a percentage with 3 decimal points, like it shows in the homework example
     khan_pct = "{:.3%}".format(khan_pct)
     #print(khan_pct)
     # Run the same calculation as above for the rest of the candidates
+    # And format each to a percentage with 3 decimal points
     correy_pct = correy_total / total_votes
     correy_pct ="{:.3%}".format(correy_pct)
     li_pct = li_total / total_votes
@@ -67,13 +69,13 @@ with open(csvpath) as csvfile:
     otooley_pct = otooley_total / total_votes
     otooley_pct ="{:.3%}".format(otooley_pct)
 
-    # Use the max function to find who had the greatest number of votes to decide the winner
+    # Use the max function to the greatest number of votes a candidate recieved
+    # The answer is the winner of the election
     winner = max(khan_total, correy_total, li_total, otooley_total)
-    # This displays the max vote total
-    #print(winner)
+    #print(winner) - This displays the max vote total as a number
 
-    # If I want the winners name I can use if logic to get the value of the winners name
-    # Will use a new variable called 'winners name' to store this
+    # To get the associated winners name, I can use if logic to match the winner value with a name
+    # Will use a new variable called 'winners_name' to store this
     if winner == khan_total:
         winner_name = "Khan"
     elif winner == correy_total:
@@ -85,7 +87,7 @@ with open(csvpath) as csvfile:
     #print(winner_name)
 
 #-------------------------------------------------#
-# Print Statements (Test)
+# Print Statements
 # The text print statements and formatting are taken directly from the homework instructions, the values are dependant upon the code running successfully
 print("Election Results")
 print("-------------------------")
@@ -99,3 +101,5 @@ print("-------------------------")
 print(f"Winner: {winner_name}")
 print("-------------------------")
 
+#-------------------------------------------------#
+# Export text file of results to Analysis folder
