@@ -102,3 +102,20 @@ print(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decr
 
 #-------------------------------------------------#
 # Export text file of results to Analysis folder
+
+# Specify the file to write to
+txt_output = os.path.join("Analysis", "PyBank_Results.txt")
+
+# Open the file using the "w" to write to a file
+with open(txt_output, 'w',) as PyBank_Results:
+
+    # Write the same information to the file that was printed in the terminal
+    # Added the '\n' because it is a line break function in python when writing to a fiel, this makes the txt output resemble the terminal print
+    PyBank_Results.write(f"Financial Analysis\n")
+    PyBank_Results.write(f"----------------------------\n")
+    PyBank_Results.write(f"Total Months: {total_months}\n")
+    PyBank_Results.write(f"Total: ${net_profit}\n")
+    PyBank_Results.write(f"Average Change: ${average_change}\n")
+    PyBank_Results.write(f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})\n")
+    PyBank_Results.write(f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})")
+
