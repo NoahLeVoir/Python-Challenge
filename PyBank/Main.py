@@ -70,16 +70,19 @@ with open(csvpath) as csvfile:
         
         # Calculate the greatest change in increase to the profit_loss column
         if pl_change > greatest_increase:
-            greatest_increase = pl_change 
+            greatest_increase = pl_change
+            greatest_increase_month = row[0]
             
         # Calculate the greatest change in decrease to the profit_loss column
         if pl_change < greatest_decrease:
             greatest_decrease = pl_change
+            greatest_decrease_month = row[0]
         
 
     # Get the average by dividing the monthly change numbers by the total months count
     # The len(month_profit_change) needs a -1 because there is no value change for the first month, meaning there is one less month in the average calculation
     average_change = sum(month_profit_change) / (len(month_profit_change) - 1)
+    average_change = str(round(average_change, 2))
     #print(sum(month_profit_change))
     #print((len(month_profit_change))) - This print statement saved me
 
@@ -89,8 +92,11 @@ with open(csvpath) as csvfile:
 # The text print statements and formatting are taken directly from the homework instructions, the values are dependant upon the code running successfully
 print(f"Financial Analysis")
 print(f"----------------------------")
-print(f"Total Months {total_months}")
-print(f"Total: {net_profit}")
-print(f"Average Change: {average_change}")
-print(f"Greatest Increase in Profits: {greatest_increase}")
-print(f"Greatest Decrease in Profits: {greatest_decrease}")
+print(f"Total Months: {total_months}")
+print(f"Total: ${net_profit}")
+print(f"Average Change: ${average_change}")
+print(f"Greatest Increase in Profits: {greatest_increase_month} {greatest_increase}")
+print(f"Greatest Decrease in Profits: {greatest_decrease_month} {greatest_decrease}")
+
+#-------------------------------------------------#
+# Export text file of results to Analysis folder
